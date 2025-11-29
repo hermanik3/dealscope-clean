@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import logo from "@/public/dealscope-logo.png";
 
 import { useState, FormEvent, useMemo, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
@@ -208,10 +210,15 @@ async function handleLoadMore() {
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-emerald-100">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-2xl bg-slate-900 flex items-center justify-center text-[0.6rem] font-semibold tracking-[0.25em] text-emerald-300">
-              DS
-            </div>
-            <span className="font-semibold tracking-tight">DealScope</span>
+           <Image 
+  src={logo} 
+  alt="DealScope Logo"
+  width={250}
+  height={250}
+  priority
+  className="rounded-md"
+/> 
+            <span className="font-semibold tracking-tight"></span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             {nav.map((item) => (
