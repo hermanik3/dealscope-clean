@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 1) Metadata (title, description, icons)
+// Site Metadata
 export const metadata: Metadata = {
   metadataBase: new URL("https://dealscope.shop"),
   title: "DealScope – Find the lowest price online",
@@ -27,16 +27,13 @@ export const metadata: Metadata = {
   },
 };
 
-// 2) JSON-LD for Organization + Logo
+// JSON-LD Organization Schema
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "DealScope",
   url: "https://dealscope.shop",
-  logo: {
-    "@type": "ImageObject",
-    url: "https://dealscope.shop/dealscope-logo-192.png",
-  },
+  logo: "https://dealscope.shop/dealscope-logo-192.png",
 };
 
 export default function RootLayout({
@@ -47,16 +44,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Organization / Logo structured data for Google */}
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
