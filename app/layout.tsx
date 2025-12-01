@@ -7,9 +7,10 @@ const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "DealScope",
-  url: "https://dealscope.com", // ← change to your real domain
-  logo: "https://dealscope.com/dealscope-logo-192.png", // ← full URL to your logo
+  url: "https://dealscope.shop",
+  logo: "https://dealscope.shop/dealscope-logo-512.png",
 };
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
