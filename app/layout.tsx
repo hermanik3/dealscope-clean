@@ -15,13 +15,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dealscope.shop"), // your live domain
-  title: "DealScope",
-  description: "DealScope – find anything at the lowest price online",
-  icons: {
-    icon: "/favicon.ico",        // you can replace with /dealscope-logo.png if you prefer
-    shortcut: "/favicon.ico",
-    apple: "/dealscope-logo-192.png",
-  },
+  title: "DealScope – Find anything at the lowest price online",
+  description:
+    "DealScope is a sale-focused product search engine that scans trusted retailers like Amazon and Best Buy to find the best live price.",
 
   icons: {
     icon: "/favicon.ico",
