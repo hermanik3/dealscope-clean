@@ -3,6 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "DealScope",
+  url: "https://dealscope.com", // ← change to your real domain
+  logo: "https://dealscope.com/dealscope-logo-192.png", // ← full URL to your logo
+};
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -57,14 +65,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <script
           type="application/ld+json"
-          // app router way to embed JSON-LD
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-      </head>
-      <body className="antialiased">
         {children}
       </body>
     </html>
