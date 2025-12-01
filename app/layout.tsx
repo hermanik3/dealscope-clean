@@ -47,9 +47,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Organization Schema and other <head> stuff */}
+        {/* Organization / Logo structured data for Google */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
       </head>
-      <body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {children}
       </body>
     </html>
