@@ -1,4 +1,5 @@
 // app/layout.tsx
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -38,29 +39,19 @@ const orgJsonLd = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
-        {/* Organization Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "DealScope",
-              "url": "https://dealscope.shop",
-              "logo": "https://dealscope.shop/dealscope-logo-192.png"
-            }),
-          }}
-        />
+        {/* Organization Schema and other <head> stuff */}
       </head>
-
       <body>
         {children}
       </body>
     </html>
   );
 }
-
