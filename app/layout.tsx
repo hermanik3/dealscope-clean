@@ -21,32 +21,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://dealscope.shop"), // your live domain
-  title: "DealScope – Find anything at the lowest price online",
-  description:
-    "DealScope is a sale-focused product search engine that scans trusted retailers like Amazon and Best Buy to find the best live price.",
-
+export const metadata = {
+  title: "DealScope",
+  description: "DealScope is a sale-focused product search engine.",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/dealscope-logo-192.png",
-  },
-
-  openGraph: {
-    title: "DealScope – Lowest price search",
-    description:
-      "Compare live prices from trusted retailers and jump straight to the best deal.",
-    url: "https://dealscope.shop",
-    siteName: "DealScope",
-    images: [
-      {
-        url: "/dealscope-logo-512.png",
-        width: 512,
-        height: 512,
-        alt: "DealScope logo",
-      },
-    ],
+    icon: "/dealscope-logo-512.png",
+    shortcut: "/dealscope-logo-512.png",
+    apple: "/dealscope-logo-512.png",
   },
 };
 
