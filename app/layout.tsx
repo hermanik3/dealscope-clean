@@ -8,9 +8,8 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "DealScope",
   url: "https://dealscope.shop",
-  logo: "https://dealscope.shop/dealscope-logo-512.png",
+  logo: "https://dealscope.shop/dealscope-logo-192.png",
 };
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,13 +21,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "DealScope",
-  description: "DealScope is a sale-focused product search engine.",
+export const metadata: Metadata = {
+  title: "DealScope – Find the lowest price online",
+  description:
+    "DealScope is a sale-focused product search engine that finds the lowest prices across trusted retailers.",
   icons: {
-    icon: "/dealscope-logo-512.png",
-    shortcut: "/dealscope-logo-512.png",
-    apple: "/dealscope-logo-512.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/dealscope-logo-192.png",
   },
 };
 
@@ -37,14 +37,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const orgJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "DealScope",
-    url: "https://dealscope.shop",
-    logo: "https://dealscope.shop/dealscope-logo-512.png",
-  };
-
   return (
     <html lang="en">
       <body
@@ -60,3 +52,4 @@ export default function RootLayout({
     </html>
   );
 }
+
