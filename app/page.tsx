@@ -441,7 +441,7 @@ async function handleLoadMore() {
   )}
 </div>
 
-      <div className="absolute -bottom-6 -left-6 hidden md:block h-28 w-28 rounded-3xl bg-slate-900/90" />
+
     </motion.div>
   </div>
 </section>

@@ -14,25 +14,61 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dealscope.shop"), // your live domain
   title: "DealScope",
   description: "DealScope – find anything at the lowest price online",
   icons: {
     icon: "/favicon.ico",        // you can replace with /dealscope-logo.png if you prefer
     shortcut: "/favicon.ico",
-    apple: "/dealscope-logo.png",
+    apple: "/dealscope-logo-192.png",
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/dealscope-logo-192.png",
+  },
+
+  openGraph: {
+    title: "DealScope – Lowest price search",
+    description:
+      "Compare live prices from trusted retailers and jump straight to the best deal.",
+    url: "https://dealscope.shop",
+    siteName: "DealScope",
+    images: [
+      {
+        url: "/dealscope-logo-512.png",
+        width: 512,
+        height: 512,
+        alt: "DealScope logo",
+      },
+    ],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "DealScope",
+    url: "https://dealscope.shop",
+    logo: "https://dealscope.shop/dealscope-logo-512.png",
+  };
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        <script
+          type="application/ld+json"
+          // app router way to embed JSON-LD
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+      </head>
+      <body className="antialiased">
         {children}
       </body>
     </html>
