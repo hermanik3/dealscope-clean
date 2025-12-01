@@ -38,24 +38,29 @@ const orgJsonLd = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* Organization / logo structured data */}
+      <head>
+        {/* Organization Schema */}
         <script
           type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "DealScope",
+              "url": "https://dealscope.shop",
+              "logo": "https://dealscope.shop/dealscope-logo-192.png"
+            }),
+          }}
         />
+      </head>
+
+      <body>
         {children}
       </body>
     </html>
   );
 }
+
