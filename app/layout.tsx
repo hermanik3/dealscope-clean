@@ -1,15 +1,7 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Image from "next/image";
-
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "DealScope",
-  url: "https://dealscope.shop",
-  logo: "https://dealscope.shop/dealscope-logo-192.png",
-};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// 1) Metadata (title, description, icons)
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dealscope.shop"),
   title: "DealScope – Find the lowest price online",
   description:
     "DealScope is a sale-focused product search engine that finds the lowest prices across trusted retailers.",
@@ -29,6 +23,18 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/dealscope-logo-192.png",
+  },
+};
+
+// 2) JSON-LD for Organization + Logo
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "DealScope",
+  url: "https://dealscope.shop",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://dealscope.shop/dealscope-logo-192.png",
   },
 };
 
@@ -42,6 +48,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Organization / logo structured data */}
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -52,4 +59,3 @@ export default function RootLayout({
     </html>
   );
 }
-
