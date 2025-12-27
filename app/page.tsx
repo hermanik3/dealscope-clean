@@ -145,26 +145,35 @@ const bestDeal = useMemo(() => {
   return best;
 }, [results, searchTerm]);
 
-  async function handleSearch(e: FormEvent) {
-    e.preventDefault();
-    if (!searchTerm.trim()) return;
-    setLoading(true);
-    setError(null);
+async function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  setResults([]);
+  setPage(1);
 
-    try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "Search failed");
-      }
-      setResults(data.results || []);
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || "Search failed");
-    } finally {
-      setLoading(false);
+  try {
+    const params = new URLSearchParams({
+      q: searchTerm,
+      page: "1",
+      provider: "amazon",     // 👈 FAST MODE: only Amazon
+    });
+
+    const res = await fetch(`/api/search?${params.toString()}`);
+    if (!res.ok) {
+      throw new Error("Search failed");
     }
+
+    const data = await res.json();
+    setResults(data.results || []);
+    setHasMore(Boolean(data.hasMore));
+  } catch (err: any) {
+    console.error(err);
+    setError("Something went wrong while searching.");
+  } finally {
+    setLoading(false);
   }
+}  
 async function handleLoadMore() {
   if (loading) return; // avoid double calls
   if (!searchTerm.trim()) return;
